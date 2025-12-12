@@ -6,8 +6,26 @@
 </head>
  
 <body>
+    <h1>キノコ造形地図プロジェクト</h1>
+    <div id="map" style="height: 800px; width: 100%;"></div>
+
     <script src="index.ts"></script>
     Hello World！
     Hello World!
+
+    <script>
+        // 地図ライブラリがロードされた後に呼び出されるグローバルコールバック関数
+        function initMap() {
+          // index.ts の中で定義した initMap 関数を実行する（この時点ではまだ記述していません）
+          console.log("Google Maps API loaded.");
+        }
+      </script>
+  </head>
+  <body>
+      <script async defer 
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1tNKoZx4m5lqv0PBJPA-Iq4Ii-GJa9t8&callback=initMap">
+      </script>
+  </body>
+
 </body>
 </html>
