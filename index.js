@@ -1,9 +1,7 @@
 function initMap() {
     var mapDiv = document.getElementById('map');
-    
-    // 東京駅を初期の中心に設定
     var initialCenter = {lat: 35.6812, lng: 139.7671};
-    
+
     var map = new google.maps.Map(mapDiv, {
       zoom: 17,
       center: initialCenter,
@@ -12,7 +10,6 @@ function initMap() {
       }
     });
 
-    // カスタムタイルレイヤーの定義
     var customMapType = new google.maps.ImageMapType({
       getTileUrl: function(coord, zoom) {
         return './custom_tiles/' + zoom + '/' + coord.x + '/' + coord.y + '.jpg'; 
@@ -22,7 +19,7 @@ function initMap() {
       minZoom: 17,
       name: 'Kinoko Map'
     });
-  
+
     map.mapTypes.set('custom_map', customMapType);
     map.setMapTypeId('custom_map');
 }
