@@ -2,7 +2,18 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>キノコ造形地図プロジェクト</title>
     <link rel="stylesheet" href="style.css">
+    
+    <script>
+      function initMap() {
+        // index.ts の中で定義した initMap 関数を実行する
+        // index.ts は実際にはコンパイルされた index.js を読み込むべきですが、
+        // この環境では index.ts を直接読み込む形で進めています。
+        // もし動かない場合は <script src="index.js"></script> に変更が必要です。
+        console.log("Google Maps API loaded.");
+      }
+    </script>
 </head>
  
 <body>
@@ -10,21 +21,9 @@
     <div id="map" style="height: 800px; width: 100%;"></div>
 
     <script src="index.ts"></script>
-    Hello World！
-
-    <script>
-        // 地図ライブラリがロードされた後に呼び出されるグローバルコールバック関数
-        function initMap() {
-          // index.ts の中で定義した initMap 関数を実行する（この時点ではまだ記述していません）
-          console.log("Google Maps API loaded.");
-        }
-      </script>
-  </head>
-  <body>
-      <script async defer 
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1tNKoZx4m5lqv0PBJPA-Iq4Ii-GJa9t8&callback=initMap">
-      </script>
-  </body>
-
+    
+    <script async defer 
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
 </body>
 </html>
