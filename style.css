@@ -49,7 +49,6 @@ h2.section-title {
 /* 2. トップヘッダーのスタイル */
 /* ==================================== */
 .top-header {
-    // ★★★ 修正箇所 ★★★ Kinoko_Top.jpgのパスを修正
     background-image: url('images/Kinoko_Top.jpg'); 
     background-size: cover;
     background-position: center;
@@ -87,7 +86,6 @@ h2.section-title {
     display: block;
     width: 30px;
     height: 40px;
-    // ★★★ 修正箇所 ★★★ mark1.pngのパスを修正
     background-image: url('images/mark1.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -105,7 +103,6 @@ h2.section-title {
 .pin-wrapper input:checked + .pin-icon {
     /* ピコンと跳ねるアニメーション */
     transform: translateY(-8px); 
-    // ★★★ 修正箇所 ★★★ mark2.pngのパスを修正
     background-image: url('images/mark2.png'); 
 }
 
