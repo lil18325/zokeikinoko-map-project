@@ -1,12 +1,12 @@
 function initMap() {
     var mapDiv = document.getElementById('map');
     
-    // 【修正点】タイルが存在する場所（大阪城付近）の座標に中心を変更
-    var initialCenter = {lat: 34.6873, lng: 135.5255}; 
+    // 【修正】タイルがあるエリアの中心座標 (例: 大阪付近をさらに細かく調整)
+    var initialCenter = {lat: 34.6865, lng: 135.5200}; // より正確なカスタムタイルエリアの中心を仮定
 
     var map = new google.maps.Map(mapDiv, {
-      // 【修正点】カスタムタイルの最小ズームレベル（17）に設定
-      zoom: 17,
+      // 【修正】ズームをタイルが存在する最大レベル 20 に固定
+      zoom: 20, 
       center: initialCenter,
       mapTypeControlOptions: {
         mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'custom_map']
@@ -15,12 +15,12 @@ function initMap() {
 
     var customMapType = new google.maps.ImageMapType({
       getTileUrl: function(coord, zoom) {
-        // Z/X/Y 形式でローカルタイルを参照
         return './custom_tiles/' + zoom + '/' + coord.x + '/' + coord.y + '.jpg'; 
       },
       tileSize: new google.maps.Size(256, 256),
+      // 【修正】minZoom も 20 に固定
       maxZoom: 20,
-      minZoom: 17,
+      minZoom: 20, 
       name: 'Kinoko Map'
     });
 
