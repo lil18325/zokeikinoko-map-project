@@ -15,7 +15,8 @@ function initMap() {
     // ... (maxZoom/minZoom: 18 は前回のまま)
     var customMapType = new google.maps.ImageMapType({
         getTileUrl: function(coord, zoom) {
-            return './custom_tiles/' + zoom + '/' + coord.x + '/' + coord.y + '.png';
+            return 'https://lil18325.github.io/zokeikinoko-map-project/custom_tiles/' 
+                   + zoom + '/' + coord.x + '/' + coord.y + '.png';
         },
         tileSize: new google.maps.Size(256, 256),
         maxZoom: 18, 
