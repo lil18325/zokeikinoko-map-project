@@ -1,22 +1,25 @@
+// index.js
+
 function initMap() {
-    // 緯度・経度を18のタイルに合わせて修正
-    var initialCenter = new google.maps.LatLng(34.6853, 139.3136); 
+    // 修正: ブラウザが要求しているタイル座標の中心（X=232516.5, Y=104113.5 at Z=18）に合わせる
+    var initialCenter = new google.maps.LatLng(35.6896, 139.7569); 
     
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 18, // 修正: 初期ズーム
+        zoom: 18, 
         center: initialCenter,
         mapTypeControlOptions: {
             mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'custom_map']
         }
     });
 
+    // ... (maxZoom/minZoom: 18 は前回のまま)
     var customMapType = new google.maps.ImageMapType({
         getTileUrl: function(coord, zoom) {
             return './custom_tiles/' + zoom + '/' + coord.x + '/' + coord.y + '.jpg';
         },
         tileSize: new google.maps.Size(256, 256),
-        maxZoom: 18, // 修正: 最大ズーム
-        minZoom: 18, // 修正: 最小ズーム
+        maxZoom: 18, 
+        minZoom: 18, 
         name: 'Kinoko Map'
     });
 
