@@ -2,8 +2,8 @@
 
 function initMap() {
     // 修正: ブラウザが要求しているタイル座標の中心（X=232516.5, Y=104113.5 at Z=18）に合わせる
-    var initialCenter = new google.maps.LatLng(35.6896, 139.7569); 
-    
+    var initialCenter = new google.maps.LatLng(35.9189, 139.7828); // 浦和付近の座標
+
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 18, 
         center: initialCenter,
