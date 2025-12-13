@@ -3,9 +3,9 @@ function initMap() {
     
     // タイルが存在する大阪城付近の中心座標に設定
     // 緯度: 34.68748, 経度: 135.52554 (Zoom 20 のタイル範囲の中心付近)
-    var initialCenter = {lat: 34.68748, lng: 135.52554}; 
+    var initialCenter = new google.maps.LatLng(34.689, 135.525);
 
-    var map = new google.maps.Map(mapDiv, {
+    var map = new google.maps.Map(document.getElementById('map'), {
       // ズームレベルをタイルが存在する 20 に固定
       zoom: 20, 
       center: initialCenter,
