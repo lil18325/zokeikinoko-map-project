@@ -1,21 +1,280 @@
-/* style.css */
-
-/* 画面全体に高さを確保する */
-html, body {
-    height: 100%; /* 画面の高さいっぱい */
+/* ==================================== */
+/* 1. 全体とレイアウトの基本設定 */
+/* ==================================== */
+body {
+    font-family: 'Hiragino Sans', 'メイリオ', Meiryo, sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  /* 地図コンテナを画面いっぱいに広げる */
-  #map {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: #2ecc71;
+    margin-top: 0;
+}
+
+h2.section-title {
+    text-align: center;
+    padding: 40px 0 20px;
+    font-size: 2.2em;
+    border-bottom: 3px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+/* Moreボタンの共通スタイル */
+.more-button {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.more-button:hover {
+    background-color: #2980b9;
+}
+
+
+/* ==================================== */
+/* 2. トップヘッダーのスタイル */
+/* ==================================== */
+.top-header {
+    /* Kinoko_Top.jpgを使用 */
+    background-image: url('Kinoko_Top.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 450px; /* 画像の縦幅に合わせて調整 */
+    margin-bottom: 40px;
+}
+
+
+/* ==================================== */
+/* 3. MAPセクション (絶対配置とピンの制御) */
+/* ==================================== */
+.map-container {
+    position: relative; 
+    width: fit-content; 
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.map-image {
+    display: block;
     width: 100%;
-    height: 100%; 
-    /* height: 100%; がbodyの高さに依存しすぎる場合、height: 100vh; も試してください */
-  }
-  
-  /* 地図が表示されない原因になる h1 要素のためのスペースを削除 */
-  h1 {
-    display: none; /* 一時的に非表示にする */
-  }
-  
+    height: auto;
+}
+
+/* ピンの基本配置 */
+.pin-wrapper {
+    position: absolute; 
+}
+
+/* ピンの見た目 (mark1.png/mark2.pngの切り替えとアニメーション) */
+.pin-icon {
+    display: block;
+    width: 30px;
+    height: 40px;
+    /* mark1.pngを背景に設定 */
+    background-image: url('mark1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: transform 0.2s, background-image 0.2s;
+    z-index: 10;
+}
+
+/* チェックボックス (非表示) */
+.pin-wrapper input[type="checkbox"] {
+    display: none; 
+}
+
+/* ピンがクリックされた時 (checked) の状態 */
+.pin-wrapper input:checked + .pin-icon {
+    /* ピコンと跳ねるアニメーション */
+    transform: translateY(-8px); 
+    /* mark2.pngに切り替え */
+    background-image: url('mark2.png'); 
+}
+
+/* 吹き出しのスタイル */
+.pin-popup {
+    position: absolute;
+    /* 吹き出しの表示位置をピンの上に調整 */
+    bottom: 50px; 
+    left: -150px; 
+    
+    background-color: white;
+    border: 2px solid #3498db;
+    padding: 15px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    
+    /* 初期状態では非表示 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    z-index: 50;
+}
+
+/* 吹き出しの「しっぽ」 */
+.pin-popup::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 155px; /* 中央付近に配置 */
+    border-width: 12px;
+    border-style: solid;
+    border-color: #3498db transparent transparent transparent;
+}
+.pin-popup::before { /* 吹き出しの本体側のしっぽ（白） */
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 157px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    z-index: 51;
+}
+
+/* チェックされたら吹き出しを表示 */
+.pin-wrapper input[type="checkbox"]:checked ~ .pin-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.popup-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.popup-info strong {
+    display: inline-block;
+    width: 60px;
+    color: #7f8c8d;
+}
+.edible-tag {
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: white;
+}
+.tag-食 { background-color: #27ae60; }
+.tag-毒 { background-color: #c0392b; }
+.tag-不食 { background-color: #f39c12; }
+
+
+/* ==================================== */
+/* 4. キノコ一覧セクション */
+/* ==================================== */
+.mushroom-list {
+    display: grid;
+    /* 画面サイズに応じて列数が変わるレスポンシブ設定 */
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.mushroom-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    background-color: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mushroom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mushroom-card img {
+    width: 100%;
+    height: 180px; /* 画像の高さを固定 */
+    object-fit: cover; /* 画像がはみ出さないように調整 */
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+}
+
+
+/* ==================================== */
+/* 5. 詳細ページ共通スタイル (detail-xx.html用) */
+/* ==================================== */
+.detail-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-button { 
+    display: inline-block; margin-bottom: 20px; padding: 10px 15px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s; 
+}
+.back-button:hover { background-color: #2980b9; }
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+.image-gallery img {
+    max-width: 45%; 
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+.info-box p { margin: 5px 0; }
+.info-box strong { color: #27ae60; }
+
+/* レシピセクション */
+.recipe-steps {
+    list-style-type: none;
+    padding: 0;
+}
+.recipe-steps li {
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-left: 5px solid #2ecc71;
+    border-radius: 4px;
+}

@@ -1,17 +1,82 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-    <meta charset="utf-8">
-    <title>キノコ造形地図プロジェクト</title>
-    <link rel="stylesheet" href="style.css">
-    
-    </head>
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>東京造形大学 きのこ図鑑</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
 <body>
-    <div id="map"></div>
-    <script src="index.js"></script>
 
-    <script async defer 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1tNKoZx4m5lqv0PBJPA-Iq4Ii-GJa9t8&callback=initMap">
-    </script>
+    <header class="top-header"></header>
+
+    <div class="container">
+        
+        <h2 class="section-title">MAP</h2>
+        <div class="map-container">
+            <img src="my_map.png" alt="きのこの生息地地図" class="map-image">
+
+            <div class="pin-wrapper" style="top: 30%; left: 45%;">
+                <label for="pin-1-check" class="pin-icon"></label>
+                <input type="checkbox" id="pin-1-check">
+                
+                <div class="pin-popup">
+                    <h3>タマゴタケ</h3>
+                    <img src="zokei_kinoko-01.jpg" alt="タマゴタケ画像" class="popup-image">
+                    <div class="popup-info">
+                        <p><strong>属性:</strong> テングタケ科</p>
+                        <p><strong>時期:</strong> 夏～秋</p>
+                        <p><strong>食用:</strong> <span class="edible-tag tag-食">食</span></p>
+                    </div>
+                    <a href="detail-01.html" class="more-button">more</a>
+                </div>
+            </div>
+
+            <div class="pin-wrapper" style="top: 55%; left: 20%;">
+                <label for="pin-2-check" class="pin-icon"></label>
+                <input type="checkbox" id="pin-2-check">
+                
+                <div class="pin-popup">
+                    <h3>ヒラタケ</h3>
+                    <img src="zokei_kinoko-18.jpg" alt="ヒラタケ画像" class="popup-image">
+                    <div class="popup-info">
+                        <p><strong>属性:</strong> キシメジ科</p>
+                        <p><strong>時期:</strong> 秋～春</p>
+                        <p><strong>食用:</strong> <span class="edible-tag tag-食">食</span></p>
+                    </div>
+                    <a href="detail-18.html" class="more-button">more</a>
+                </div>
+            </div>
+            
+            </div>
+
+
+        <h2 class="section-title">キノコの種類</h2>
+        <div class="mushroom-list">
+            
+            <div class="mushroom-card">
+                <img src="zokei_kinoko-01.jpg" alt="タマゴタケ">
+                <div class="card-content">
+                    <h3>タマゴタケ</h3>
+                    <p>時期: 夏～秋</p>
+                    <p>食用: <span class="edible-tag tag-食">食</span></p>
+                    <a href="detail-01.html" class="more-button">more</a>
+                </div>
+            </div>
+
+            <div class="mushroom-card">
+                <img src="zokei_kinoko-18.jpg" alt="ヒラタケ">
+                <div class="card-content">
+                    <h3>ヒラタケ</h3>
+                    <p>時期: 秋～春</p>
+                    <p>食用: <span class="edible-tag tag-食">食</span></p>
+                    <a href="detail-18.html" class="more-button">more</a>
+                </div>
+            </div>
+            
+            </div>
+
+    </div>
+
 </body>
 </html>
