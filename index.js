@@ -2,7 +2,7 @@
 
 function initMap() {
     // 修正: ブラウザが要求しているタイル座標の中心（X=232516.5, Y=104113.5 at Z=18）に合わせる
-    var initialCenter = new google.maps.LatLng(34.68535, 139.31355);
+    var initialCenter = new google.maps.LatLng(35.9189, 139.7828);
 
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 18, 
